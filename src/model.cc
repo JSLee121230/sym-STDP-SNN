@@ -192,7 +192,9 @@ void modelDefinition(NNmodel &model)
 #endif
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
+#ifndef ORIGINAL_MODE
     model.addSynapsePopulation("E2C", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
+#endif
 #endif
     model.addSynapsePopulation("E2I", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PInh", ini_NSYNAPSE_EI, p_NSYNAPSE_EI, postSynV, postExpE2I);
     model.addSynapsePopulation("I2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PInh", "PExc", ini_NSYNAPSE_IE, p_NSYNAPSE_IE, postSynV, postExpI2E);
