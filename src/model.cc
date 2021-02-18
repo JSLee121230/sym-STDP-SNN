@@ -161,9 +161,10 @@ void modelDefinition(NNmodel &model)
     int Poi = addNeuronModel_Poi(nModels);
     int LIF_Exc = addNeuronModel_LIF_Exc(nModels);
     int LIF_Inh = addNeuronModel_LIF_Inh(nModels);
+#ifndef ORIGINAL_MODE
     int LIF_Cla = addNeuronModel_LIF_Cla(nModels);
     int DA_STDP = addSynapseModel_DA_STDP(weightUpdateModels);
-
+#endif
     model.setGPUDevice(ID_DEVICE); 
     model.setDT(DT);
     model.setPrecision(_FTYPE);
@@ -176,7 +177,9 @@ void modelDefinition(NNmodel &model)
     model.addNeuronPopulation("PExc", NExc, LIF_Exc, p_Exc_fixed, ini_Exc);
 #endif
     model.addNeuronPopulation("PInh", NInh, LIF_Inh, p_Inh, ini_Inh); 
+#ifndef ORIGINAL_MODE
     model.addNeuronPopulation("PCla", NCla, LIF_Cla, p_Cla, ini_Cla);
+#endif
 
 #ifndef test_mode
 #ifndef FIXED_HIDDEN_LAYER
@@ -184,7 +187,9 @@ void modelDefinition(NNmodel &model)
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
+#ifndef ORIGINAL_MODE
     model.addSynapsePopulation("E2C", DA_STDP, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_DA_STDP_EC, p_DA_STDP_EC, postSynV, postExpP2E);
+#endif
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
     model.addSynapsePopulation("E2C", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);

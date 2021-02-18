@@ -1,11 +1,12 @@
 #ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 
+#define ORIGINAL_MODE
 // #define TEST_MODE
 #define ID_DEVICE 0 //-1 // choose GPU. '-1' represents 'AUTO_CHOOSE'
 // #define FILE_RECODER
 // #define SPIKES_MONITOR
-#define FIXED_HIDDEN_LAYER
+// #define FIXED_HIDDEN_LAYER
 // // #define SVM_TRAIN
 #define PLOT_ON
 
@@ -48,7 +49,7 @@
 
 #define NUM_TRAIN_SAMPLES 60000
 #define NUM_TEST_SAMPLES 10000
-#define NUM_SAMPLES 60000 * 20
+#define NUM_SAMPLES 60000 * 3
 #define UPDATE_INTERVAL 10000 
 #define EVALUATION_INTERVAL 10000
 #define UPDATE_TOTAL (NUM_SAMPLES / UPDATE_INTERVAL)
