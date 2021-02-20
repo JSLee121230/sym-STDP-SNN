@@ -554,7 +554,7 @@ void rewrite_gEC()
         g_IE_array[i_dense * postN_IE + j_dense] = g_IE;
     }
   
-  setSparseConnectivityFromDense(gC2E, preN_EC, postN_EC, g_CE_array, &CE2C);
+  setSparseConnectivityFromDense(gC2E, preN_EC, postN_EC, g_CE_array, &CC2E);
 
   delete[] g_CE_array;
 }
@@ -604,6 +604,7 @@ void reset_Cla_para()
   pushPClaCurrentSpikeEventsToDevice();
 
   fill_n(inSynC2E, NCla, 0);
+  rewrite_gEC()
   //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   pushC2EStateToDevice();
 }
