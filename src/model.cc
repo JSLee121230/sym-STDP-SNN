@@ -88,6 +88,10 @@ double postExpP2E[2] = {
     P2E_tau_S, // decay time constant for S [ms]
     P2E_Erev,  // Reversal potential
 };
+double postExpE2C[2] = {
+    I2E_tau_S,
+    I2E_Erev,
+};
 double postExpE2I[2] = {
     E2I_tau_S,
     E2I_Erev,
@@ -191,7 +195,7 @@ void modelDefinition(NNmodel &model)
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
-    model.addSynapsePopulation("C2E", STDP, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_noSTDP, p_noSTDP_CE, postSynV, postExpP2E);
+    model.addSynapsePopulation("C2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_noSTDP, p_noSTDP_CE, postSynV, postExpC2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
     model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
