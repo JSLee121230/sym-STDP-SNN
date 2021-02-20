@@ -102,7 +102,10 @@ int main()
   read_gP2E_from_file("./weights/mnist_400/gP2E", gP2E);
   read_thetaPExc_from_file("./weights/mnist_400/theta", thetaPExc);
 #endif
-  get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
+  for ( int i = 0; i < 100000; i++)
+    print("%f", gC2E[i]);
+    
+  //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
   rewrite_gCE();
   get_rand(seedPPoi, NPoi, 100000);
