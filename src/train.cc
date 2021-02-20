@@ -543,15 +543,15 @@ void get_inputdata(string path, vector<vector<float>> &images, vector<float> &la
 }
 void rewrite_gEC()
 {
-  float *g_CE_array = new float[preN_EC * postN_EC]; 
+  float *g_CE_array = new float[preN_CE * postN_CE]; 
   //C——>E
-  for (int i_dense = 0; i_dense < preN_EC; i_dense++) 
-    for (int j_dense = 0; j_dense < postN_EC; j_dense++)
+  for (int i_dense = 0; i_dense < preN_CE; i_dense++) 
+    for (int j_dense = 0; j_dense < postN_CE; j_dense++)
     {
-      if (i_dense == int(j_dense/postN_EC))
-        g_CE_array[i_dense * postN_EC + j_dense] = 0.0; 
+      if (i_dense == int(j_dense/postN_CE))
+        g_CE_array[i_dense * preN_CE + j_dense] = 0.0; 
       else
-        g_CE_array[i_dense * postN_EC + j_dense] = g_CE;
+        g_CE_array[i_dense * postN_CE + j_dense] = g_CE;
     }
   
   setSparseConnectivityFromDense(gC2E, preN_EC, postN_EC, g_CE_array, &CC2E);

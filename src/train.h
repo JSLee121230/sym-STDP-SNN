@@ -14,8 +14,8 @@ using namespace std;
 #define postN_EI NInh
 #define preN_IE NInh
 #define postN_IE NExc
-#define preN_EC NCla
-#define postN_EC NExc
+#define preN_CE NCla
+#define postN_CE NExc
 #define connN_E2I NExc 
 #define connN_I2E NInh *(NExc - 1) 
 
