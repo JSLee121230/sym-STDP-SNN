@@ -62,7 +62,7 @@ int main()
   clock_t start; 
   clock_t end;
   get_inputdata(datapath, images, labels, images_test, labels_test);
-  printf("1")
+  printf("1");
   if (images.size() == labels.size() && images_test.size() == labels_test.size())
   {
     num_train_samples = images.size();
@@ -82,7 +82,7 @@ int main()
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPPoi, CPUratesPPoi, NPoi * sizeof(uint64_t), cudaMemcpyHostToDevice));
   //cudaHostAlloc(&CPUratesPPoi, 1 * sizeof(unsigned int), cudaHostAllocPortable);
   //deviceMemAllocate(&d_glbSpkCntPPoi, dd_glbSpkCntPPoi, 1 * sizeof(unsigned int));
-  printf("2")
+  printf("2");
   // ------------------------------------------------------------------------------
   //  supervision layer initialization
   // ------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ int main()
   uint64_t *CPUratesPCla = new uint64_t[NCla];
   CHECK_CUDA_ERRORS(cudaMalloc((void **)&ratesPCla, NCla * sizeof(uint64_t)));
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPCla, CPUratesPCla, NCla * sizeof(uint64_t), cudaMemcpyHostToDevice));
-  printf("3")
+  printf("3");
   // ------------------------------------------------------------------------------
   //  parameters initialization 
   // ------------------------------------------------------------------------------
@@ -104,14 +104,14 @@ int main()
   // get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
   get_rand(seedPPoi, NPoi, 100000);
-  printf("4")
+  printf("4");
   // ------------------------------------------------------------------------------
   //  reset model
   // ------------------------------------------------------------------------------
   copyStateToDevice();
   initmodel(); // need by sparse connection
   copyCurrentSpikesToDevice();
-   printf("5")
+   printf("5");
   // ------------------------------------------------------------------------------
   //  output data to file
   // ------------------------------------------------------------------------------
