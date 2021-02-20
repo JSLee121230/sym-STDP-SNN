@@ -548,7 +548,7 @@ void rewrite_gEC()
   for (int i_dense = 0; i_dense < preN_EC; i_dense++) 
     for (int j_dense = 0; j_dense < postN_EC; j_dense++)
     {
-      if (int(i_dense/postN_EC) == j_dense)
+      if (i_dense == int(j_dense/postN_EC))
         g_CE_array[i_dense * postN_EC + j_dense] = 0.0; 
       else
         g_CE_array[i_dense * postN_EC + j_dense] = g_CE;
