@@ -543,7 +543,7 @@ void get_inputdata(string path, vector<vector<float>> &images, vector<float> &la
     }
   }
 }
-void rewrite_gEC()
+void rewrite_gCE()
 {
   float *g_CE_array = new float[preN_CE * postN_CE]; 
   //C——>E

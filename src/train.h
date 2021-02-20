@@ -43,6 +43,7 @@ void get_rand_g(float *p, long int n, int g_max);
 void get_rand(uint64_t *p, long int n, int max);
 void get_inputdata(string datapath, vector<vector<float>> &images, vector<float> &labels, vector<vector<float>> &images_test, vector<float> &labels_test);
 void rewrite_gEI_gIE();
+void rewrite_gCE();
 void reset_Cla_para();
 void feed_to_networks(vector<float> image, vector<float> &FR_khz, float input_intensity);
 void Cla_feed_to_networks(int label, vector<float> &cla_FR_khz, float cla_input_intensity);
