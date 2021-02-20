@@ -103,8 +103,8 @@ int main()
   read_thetaPExc_from_file("./weights/mnist_400/theta", thetaPExc);
 #endif
   for ( int i = 0; i < 100000; i++)
-    print("%f", gC2E[i]);
-    
+    printf("%f", gC2E[i]);
+
   //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
   rewrite_gCE();
