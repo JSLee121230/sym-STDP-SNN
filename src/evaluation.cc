@@ -19,18 +19,18 @@ void normalize_weights(float *tmp_gP2E)
   }
 }
 
-void cla_normalize_weights(float *tmp_gE2C)
+void cla_normalize_weights(float *tmp_gC2E)
 {
   float tmp_sum, tmp_factors;
   for (int i = 0; i < NCla; i++)
   {
     tmp_sum = 0; 
     for (int j = 0; j < NExc; j++)
-      tmp_sum += tmp_gE2C[i + j * NCla]; 
+      tmp_sum += tmp_gC2E[i + j * NCla]; 
     tmp_factors = Cla_NORMAL / tmp_sum;
     for (int j = 0; j < NExc; j++)
     {
-      tmp_gE2C[i + j * NCla] *= tmp_factors; 
+      tmp_gC2E[i + j * NCla] *= tmp_factors; 
     }
   }
 }
@@ -206,7 +206,7 @@ void get_visual_ECw(vector<vector<float>> &tmp_visual)
   {
     for (int j = 0; j < ECw_Y; j++)
     {
-      tmp_visual[i][j] = gE2C[i * NCla + j];
+      tmp_visual[i][j] = gC2E[i * NCla + j];
     }
   }
 }
@@ -607,20 +607,20 @@ void write_result_monitor_to_file_0518_cla(int tmp_result_monitor[NCla], int tmp
   }
 }
 
-void save_gE2C(string id)
+void save_gC2E(string id)
 {
-  ofstream os_gE2C("./weights/" + id);
-  cout << "save gE2C" << endl;
+  ofstream os_gC2E("./weights/" + id);
+  cout << "save gC2E" << endl;
   for (int i = 0; i < NExc; i++)
   {
     for (int j = 0; j < NCla; j++)
     {
-      os_gE2C << gE2C[i * NCla + j] << " ";
+      os_gC2E << gC2E[i * NCla + j] << " ";
     }
-    os_gE2C << endl;
+    os_gC2E << endl;
   }
-  os_gE2C << endl;
-  os_gE2C.close();
+  os_gC2E << endl;
+  os_gC2E.close();
 }
 void save_gP2E(string id)
 {

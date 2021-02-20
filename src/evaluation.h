@@ -15,7 +15,7 @@ using namespace std;
 #define SUPERVISED 1
 
 void normalize_weights(float *tmp_gP2E);
-void cla_normalize_weights(float *tmp_gE2C);
+void cla_normalize_weights(float *tmp_gC2E);
 
 int get_recognized_number(vector<int> spike_record, vector<int> assignments);                                 
 void get_new_assignments(vector<int> &assignments, vector<vector<int>> result_monitor, vector<float> labels); 
@@ -62,6 +62,6 @@ void write_result_monitor_to_file_0518_cla(vector<int> tmp_result_monitor, int t
 
 void save_gP2E(string id);
 void save_theta(string id);
-void save_gE2C(string id);
+void save_gC2E(string id);
 
 #endif

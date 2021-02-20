@@ -100,7 +100,7 @@ int main()
   read_gP2E_from_file("./weights/mnist_400/gP2E", gP2E);
   read_thetaPExc_from_file("./weights/mnist_400/theta", thetaPExc);
 #endif
-  // get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
+  // get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
   get_rand(seedPPoi, NPoi, 100000);
 
@@ -356,12 +356,12 @@ int main()
       if ((imageNum + 1) % UPDATE_INTERVAL == 0 && imageNum > 0 && !testDataEvaluateMode) 
       {
         CHECK_CUDA_ERRORS(cudaMemcpy(gP2E, d_gP2E, size_gP2E * sizeof(float), cudaMemcpyDeviceToHost));
-        CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
+        CHECK_CUDA_ERRORS(cudaMemcpy(gC2E, d_gC2E, size_gC2E * sizeof(float), cudaMemcpyDeviceToHost));
         CHECK_CUDA_ERRORS(cudaMemcpy(thetaPExc, d_thetaPExc, NExc * sizeof(float), cudaMemcpyDeviceToHost));
 
         string fileid = "_" + to_string((imageNum + 1) / UPDATE_INTERVAL);
         save_gP2E("gP2E" + fileid);
-        save_gE2C("gE2C" + fileid);
+        save_gC2E("gC2E" + fileid);
         save_theta("theta" + fileid);
         // write_result_monitor_to_file(test_result_monitor);
 #ifdef PLOT_ON
@@ -370,14 +370,14 @@ int main()
         varianceP2E.update();
         varianceP2E_distribution.update();
 
-        // get_variance(variance_E2C, gE2C, NExc, NCla, Cla_NORMAL);
-        get_variance(variance_E2C, gE2C, NCla, NExc, Cla_NORMAL);
+        // get_variance(variance_E2C, gC2E, NExc, NCla, Cla_NORMAL);
+        get_variance(variance_E2C, gC2E, NCla, NExc, Cla_NORMAL);
         write_variance_gEC_to_file(variance_E2C, imageNum / UPDATE_INTERVAL);
         varianceE2C.update();
         varianceE2C_distribution.update();
 
         CHECK_CUDA_ERRORS(cudaMemcpy(gP2E, d_gP2E, size_gP2E * sizeof(float), cudaMemcpyDeviceToHost));
-        CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
+        CHECK_CUDA_ERRORS(cudaMemcpy(gC2E, d_gC2E, size_gC2E * sizeof(float), cudaMemcpyDeviceToHost));
         get_visual_PEw(PEVisual);
         write_visual_PEw_to_file(PEVisual);
         PEw.update();
@@ -409,11 +409,11 @@ int main()
     cout << "save results..." << endl;
 
     CHECK_CUDA_ERRORS(cudaMemcpy(gP2E, d_gP2E, size_gP2E * sizeof(float), cudaMemcpyDeviceToHost));
-    CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
+    CHECK_CUDA_ERRORS(cudaMemcpy(gC2E, d_gC2E, size_gC2E * sizeof(float), cudaMemcpyDeviceToHost));
     CHECK_CUDA_ERRORS(cudaMemcpy(thetaPExc, d_thetaPExc, NExc * sizeof(float), cudaMemcpyDeviceToHost));
 
     save_gP2E(string("gP2E"));
-    save_gE2C(string("gE2C"));
+    save_gC2E(string("gC2E"));
     save_theta(string("theta"));
 
 #ifdef PLOT_ON
@@ -427,8 +427,8 @@ int main()
     write_variance_to_file(variance, imageNum / UPDATE_INTERVAL);
     varianceP2E.update();
     varianceP2E_distribution.update();
-    // get_variance(variance, gE2C, NExc, NCla, Cla_NORMAL);
-    get_variance(variance_E2C, gE2C, NCla, NExc, Cla_NORMAL);
+    // get_variance(variance, gC2E, NExc, NCla, Cla_NORMAL);
+    get_variance(variance_E2C, gC2E, NCla, NExc, Cla_NORMAL);
     write_variance_gEC_to_file(variance_E2C, imageNum / UPDATE_INTERVAL);
     varianceE2C.update();
     varianceE2C_distribution.update();
@@ -604,7 +604,7 @@ void reset_Cla_para()
   pushPClaCurrentSpikeEventsToDevice();
 
   fill_n(inSynC2E, NCla, 0);
-  //get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
+  //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   pushC2EStateToDevice();
 }
 void feed_to_networks(vector<float> image, vector<float> &FR_khz, float input_intensity)
@@ -626,9 +626,9 @@ void Cla_feed_to_networks(int label, vector<float> &cla_FR_khz, float cla_input_
   cla_FR_khz[label] = 1.0 * cla_input_intensity;
   convertRateToRandomNumberThreshold(cla_FR_khz, CPUratesPCla, NCla);                                      
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPCla, CPUratesPCla, NCla * sizeof(uint64_t), cudaMemcpyHostToDevice)); 
-  //CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
-  //cla_normalize_weights(gE2C);                                                                    
-  //CHECK_CUDA_ERRORS(cudaMemcpy(d_gE2C, gE2C, size_gE2C * sizeof(float), cudaMemcpyHostToDevice)); 
+  //CHECK_CUDA_ERRORS(cudaMemcpy(gC2E, d_gC2E, size_gC2E * sizeof(float), cudaMemcpyDeviceToHost));
+  //cla_normalize_weights(gC2E);                                                                    
+  //CHECK_CUDA_ERRORS(cudaMemcpy(d_gC2E, gC2E, size_gC2E * sizeof(float), cudaMemcpyHostToDevice)); 
 }
 void reset_ratesPPoi(vector<float> &FR_khz)
 {

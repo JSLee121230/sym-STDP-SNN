@@ -260,7 +260,7 @@ extern double ini_NSYNAPSE_IE[];
 extern double *p_NSYNAPSE_IE;
 
 extern size_t size_gP2E;
-extern size_t size_gE2C;
+extern size_t size_gC2E;
 
 void modelDefinition(NNmodel &model);
 

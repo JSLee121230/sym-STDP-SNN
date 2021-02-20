@@ -154,7 +154,7 @@ double ini_NSYNAPSE_CE[] = {
 double *p_NSYNAPSE_CE = NULL;
 
 size_t size_gP2E = NPoi * NExc;
-size_t size_gE2C = NExc * NCla;
+size_t size_gC2E = NExc * NCla;
 
 size_t size_gC2E = NExc * NCla;
 

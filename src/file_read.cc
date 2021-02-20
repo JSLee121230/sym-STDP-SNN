@@ -53,22 +53,22 @@ void read_thetaPExc_from_file(string path, float *tmp_thetaPExc)
         cout << "open " << path << " error!" << endl;
     }
 }
-void read_gE2C_from_file(string path, float *tmp_gE2C)
+void read_gC2E_from_file(string path, float *tmp_gC2E)
 {
-    string str_gE2C;
-    ifstream gE2C_file(path);
-    if (gE2C_file)
+    string str_gC2E;
+    ifstream gC2E_file(path);
+    if (gC2E_file)
     {
         cout << "Read from " << path << "..." << endl;
         for (int i = 0; i < NExc; i++)
         {
             for (int j = 0; j < NCla; j++)
             {
-                gE2C_file >> str_gE2C;
-                tmp_gE2C[i * NCla + j] = str2float(str_gE2C);
+                gC2E_file >> str_gC2E;
+                tmp_gC2E[i * NCla + j] = str2float(str_gC2E);
             }
         }
-        gE2C_file.close();
+        gC2E_file.close();
     }
     else
     {
