@@ -133,6 +133,8 @@
 
 /***setting for mnist***/
 #define gEC_MAX 8.0
+#define g_CE 17
+
 /***setting for fashion-mnist***/
 /***parameters of 400 excitatory neurons for fashion-mnist***/
 // #define gEC_MAX 40.0
@@ -240,9 +242,9 @@ extern double *postSynV;
 // DA_STDP
 //------------------------------------------------------------------------------
 extern double ini_DA_STDP_PE[];
-extern double p_DA_STDP_PE[];
+extern double p_STDP_PE[];
 extern double ini_DA_STDP_EC[];
-extern double p_DA_STDP_EC[];
+extern double p_STDP_EC[];
 //------------------------------------------------------------------------------
 // noSTDP
 //------------------------------------------------------------------------------

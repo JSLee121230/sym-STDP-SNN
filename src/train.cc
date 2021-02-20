@@ -541,7 +541,23 @@ void get_inputdata(string path, vector<vector<float>> &images, vector<float> &la
     }
   }
 }
+void rewrite_gEC()
+{
+  float *g_CE_array = new float[preN_EC * postN_EC]; 
+  //C——>E
+  for (int i_dense = 0; i_dense < preN_EC; i_dense++) 
+    for (int j_dense = 0; j_dense < postN_EC; j_dense++)
+    {
+      if (int(i_dense/postN_EC) == j_dense)
+        g_IE_array[i_dense * postN_IE + j_dense] = 0.0; 
+      else
+        g_IE_array[i_dense * postN_IE + j_dense] = g_IE;
+    }
+  
+  setSparseConnectivityFromDense(gE2C, preN_EC, postN_EC, g_CE_array, &CE2I);
 
+  delete[] g_CE_array;
+}
 void rewrite_gEI_gIE()
 {
   float *g_EI_array = new float[preN_EI * postN_EI]; 
@@ -588,7 +604,7 @@ void reset_Cla_para()
   pushPClaCurrentSpikeEventsToDevice();
 
   fill_n(inSynE2C, NCla, 0);
-  get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
+  //get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
   pushE2CStateToDevice();
 }
 void feed_to_networks(vector<float> image, vector<float> &FR_khz, float input_intensity)
@@ -610,9 +626,9 @@ void Cla_feed_to_networks(int label, vector<float> &cla_FR_khz, float cla_input_
   cla_FR_khz[label] = 1.0 * cla_input_intensity;
   convertRateToRandomNumberThreshold(cla_FR_khz, CPUratesPCla, NCla);                                      
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPCla, CPUratesPCla, NCla * sizeof(uint64_t), cudaMemcpyHostToDevice)); 
-  CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
-  cla_normalize_weights(gE2C);                                                                    
-  CHECK_CUDA_ERRORS(cudaMemcpy(d_gE2C, gE2C, size_gE2C * sizeof(float), cudaMemcpyHostToDevice)); 
+  //CHECK_CUDA_ERRORS(cudaMemcpy(gE2C, d_gE2C, size_gE2C * sizeof(float), cudaMemcpyDeviceToHost));
+  //cla_normalize_weights(gE2C);                                                                    
+  //CHECK_CUDA_ERRORS(cudaMemcpy(d_gE2C, gE2C, size_gE2C * sizeof(float), cudaMemcpyHostToDevice)); 
 }
 void reset_ratesPPoi(vector<float> &FR_khz)
 {

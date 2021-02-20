@@ -100,11 +100,11 @@ double *postSynV = NULL;
 //------------------------------------------------------------------------------
 // DA_STDP
 //------------------------------------------------------------------------------
-double ini_DA_STDP_PE[] = {
+double ini_STDP_PE[] = {
     da_stdp_PE_g,
     da_stdp_PE_testDataEvaluateMode,
 };
-double p_DA_STDP_PE[] = {
+double p_STDP_PE[] = {
     da_stdp_PE_nu_ee_pre,
     da_stdp_PE_nu_ee_post,
     da_stdp_PE_g_min,
@@ -144,8 +144,15 @@ double ini_NSYNAPSE_IE[] = {
 };
 double *p_NSYNAPSE_IE = NULL;
 
+double ini_NSYNAPSE_CE[] = {
+    g_CE,
+};
+double *p_NSYNAPSE_CE = NULL;
+
 size_t size_gP2E = NPoi * NExc;
 size_t size_gE2C = NExc * NCla;
+
+size_t size_gC2E = NExc * NCla;
 
 void modelDefinition(NNmodel &model)
 {
@@ -158,12 +165,12 @@ void modelDefinition(NNmodel &model)
 #endif
     GENN_PREFERENCES::autoRefractory = 0;
 
-    int Poi = addNeuronModel_Poi(nModels);
+    int Poi     = addNeuronModel_Poi(nModels);
     int LIF_Exc = addNeuronModel_LIF_Exc(nModels);
     int LIF_Inh = addNeuronModel_LIF_Inh(nModels);
     int LIF_Cla = addNeuronModel_LIF_Cla(nModels);
-    int DA_STDP = addSynapseModel_DA_STDP(weightUpdateModels);
-    
+    int STDP    = addSynapseModel_STDP(weightUpdateModels);
+
     model.setGPUDevice(ID_DEVICE); 
     model.setDT(DT);
     model.setPrecision(_FTYPE);
@@ -180,14 +187,14 @@ void modelDefinition(NNmodel &model)
 
 #ifndef test_mode
 #ifndef FIXED_HIDDEN_LAYER
-    model.addSynapsePopulation("P2E", DA_STDP, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_DA_STDP_PE, p_DA_STDP_PE, postSynV, postExpP2E);
+    model.addSynapsePopulation("P2E", STDP, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_STDP_PE, p_STDP_PE, postSynV, postExpP2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
-    model.addSynapsePopulation("E2C", DA_STDP, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_DA_STDP_EC, p_DA_STDP_EC, postSynV, postExpP2E);
+    model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_NSYNAPSE_CE, p_NSYNAPSE_CE, postSynV, postExpP2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
-    model.addSynapsePopulation("E2C", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
+    model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
 #endif
     model.addSynapsePopulation("E2I", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PInh", ini_NSYNAPSE_EI, p_NSYNAPSE_EI, postSynV, postExpE2I);
     model.addSynapsePopulation("I2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PInh", "PExc", ini_NSYNAPSE_IE, p_NSYNAPSE_IE, postSynV, postExpI2E);

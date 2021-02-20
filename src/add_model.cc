@@ -211,7 +211,7 @@ int addNeuronModel_LIF_Cla(vector<neuronModel> &nModels)
 // ------------------------------------------------------------------------------
 //  DA STDP
 // ------------------------------------------------------------------------------
-int addSynapseModel_DA_STDP(vector<weightUpdateModel> &weightUpdateModels)
+int addSynapseModel_STDP(vector<weightUpdateModel> &weightUpdateModels)
 {
     int DA_STDP;
     weightUpdateModel wuSTDP;
