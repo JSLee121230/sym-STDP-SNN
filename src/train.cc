@@ -554,7 +554,7 @@ void rewrite_gEC()
         g_CE_array[i_dense * postN_CE + j_dense] = g_CE;
     }
   
-  setSparseConnectivityFromDense(gC2E, preN_EC, postN_EC, g_CE_array, &CC2E);
+  setSparseConnectivityFromDense(gC2E, preN_CE, postN_CE, g_CE_array, &CC2E);
 
   delete[] g_CE_array;
 }
