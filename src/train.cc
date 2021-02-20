@@ -109,7 +109,7 @@ int main()
   //  reset model
   // ------------------------------------------------------------------------------
   copyStateToDevice();
-  rewrite_gEC();
+  rewrite_gCE();
   initmodel(); // need by sparse connection
   copyCurrentSpikesToDevice();
   printf("5");
@@ -606,7 +606,7 @@ void reset_Cla_para()
   pushPClaCurrentSpikeEventsToDevice();
 
   fill_n(inSynC2E, NCla, 0);
-  rewrite_gEC();
+  rewrite_gCE();
   //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   pushC2EStateToDevice();
 }
