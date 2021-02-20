@@ -197,9 +197,9 @@ int main()
 #endif
 
       fill_n(testDataEvaluateModePCla, NCla, testDataEvaluateMode);
-      fill_n(testDataEvaluateModeE2C, size_gE2C, testDataEvaluateMode);
+      fill_n(testDataEvaluateModeC2E, size_gC2E, testDataEvaluateMode);
       CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModePCla, testDataEvaluateModePCla, NCla * sizeof(bool), cudaMemcpyHostToDevice));
-      CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModeE2C, testDataEvaluateModeE2C, size_gE2C * sizeof(bool), cudaMemcpyHostToDevice));
+      CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModeC2E, testDataEvaluateModeC2E, size_gC2E * sizeof(bool), cudaMemcpyHostToDevice));
 
       if (!testDataEvaluateMode) //'false' means run the test set. 'true' means start running test set
       {
@@ -603,7 +603,7 @@ void reset_Cla_para()
   pushPClaCurrentSpikesToDevice();
   pushPClaCurrentSpikeEventsToDevice();
 
-  fill_n(inSynE2C, NCla, 0);
+  fill_n(inSynC2E, NCla, 0);
   //get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
   pushC2EStateToDevice();
 }
