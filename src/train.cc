@@ -102,15 +102,16 @@ int main()
   read_gP2E_from_file("./weights/mnist_400/gP2E", gP2E);
   read_thetaPExc_from_file("./weights/mnist_400/theta", thetaPExc);
 #endif
-  // get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
+  get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
+  rewrite_gCE();
   get_rand(seedPPoi, NPoi, 100000);
   printf("4\n");
   // ------------------------------------------------------------------------------
   //  reset model
   // ------------------------------------------------------------------------------
   printf("5\n");
-  rewrite_gCE();
+
   copyStateToDevice();
   printf("6\n");
   initmodel(); // need by sparse connection
