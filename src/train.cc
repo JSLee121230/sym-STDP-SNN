@@ -591,7 +591,7 @@ void reset_Cla_para()
   glbSpkCntPCla[0] = 0;
 
   fill_n(glbSpkPCla, NCla, 0);
-  fill_n(sTPCla, NCla, -10); //last spike time
+  //fill_n(sTPCla, NCla, -10); //last spike time
   fill_n(VPCla, NCla, -100);
   fill_n(trace1PCla, NCla, 1);
   fill_n(trace2PCla, NCla, 1);
