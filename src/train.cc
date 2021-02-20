@@ -549,9 +549,9 @@ void rewrite_gEC()
     for (int j_dense = 0; j_dense < postN_EC; j_dense++)
     {
       if (int(i_dense/postN_EC) == j_dense)
-        g_IE_array[i_dense * postN_EC + j_dense] = 0.0; 
+        g_CE_array[i_dense * postN_EC + j_dense] = 0.0; 
       else
-        g_IE_array[i_dense * postN_EC + j_dense] = g_CE;
+        g_CE_array[i_dense * postN_EC + j_dense] = g_CE;
     }
   
   setSparseConnectivityFromDense(gC2E, preN_EC, postN_EC, g_CE_array, &CC2E);
