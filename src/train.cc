@@ -251,7 +251,7 @@ int main()
     // ------------------------------------------------------------------------------
     //  supervision layer
     // ------------------------------------------------------------------------------
-    if (imageNum >= NUM_TRAINING_SL_INI)
+    if (imageNum < NUM_TRAINING_SL_INI)
     {
       static bool OnlyOnceInitCla = true;
       if (OnlyOnceInitCla) // Reset supervision layer parameters when imageNum = NUM_TRAINING_SL_INI
