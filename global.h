@@ -1,14 +1,13 @@
 #ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 
-#define ORIGINAL_MODE
 // #define TEST_MODE
 #define ID_DEVICE 0 //-1 // choose GPU. '-1' represents 'AUTO_CHOOSE'
 // #define FILE_RECODER
 // #define SPIKES_MONITOR
 // #define FIXED_HIDDEN_LAYER
-// // #define SVM_TRAIN
-#define PLOT_ON
+// #define SVM_TRAIN
+// #define PLOT_ON
 
 /***setting for mnist***/
 #define DATA "mnist/"
