@@ -562,6 +562,7 @@ void rewrite_gCE()
       printf("%d, %d\n",i_dense,j_dense);
     }
   
+  printf("DONE!\n");
   setSparseConnectivityFromDense(gC2E, preN_CE, postN_CE, g_CE_array, &CC2E);
 
   delete[] g_CE_array;
