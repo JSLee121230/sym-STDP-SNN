@@ -605,7 +605,7 @@ void reset_Cla_para()
 
   fill_n(inSynE2C, NCla, 0);
   //get_rand_g(gE2C, NExc * NCla, gEC_INIT_MAX_1000);
-  pushE2CStateToDevice();
+  pushC2EStateToDevice();
 }
 void feed_to_networks(vector<float> image, vector<float> &FR_khz, float input_intensity)
 {
