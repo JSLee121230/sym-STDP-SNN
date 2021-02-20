@@ -72,7 +72,7 @@ int main()
   }
   else
     exit(1);
-  printf("1\n");
+
   // ------------------------------------------------------------------------------
   //  input images initialization
   // ------------------------------------------------------------------------------
@@ -83,7 +83,6 @@ int main()
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPPoi, CPUratesPPoi, NPoi * sizeof(uint64_t), cudaMemcpyHostToDevice));
   //cudaHostAlloc(&CPUratesPPoi, 1 * sizeof(unsigned int), cudaHostAllocPortable);
   //deviceMemAllocate(&d_glbSpkCntPPoi, dd_glbSpkCntPPoi, 1 * sizeof(unsigned int));
-  printf("2\n");
   
   // ------------------------------------------------------------------------------
   //  supervision layer initialization
@@ -93,7 +92,7 @@ int main()
   uint64_t *CPUratesPCla = new uint64_t[NCla];
   CHECK_CUDA_ERRORS(cudaMalloc((void **)&ratesPCla, NCla * sizeof(uint64_t)));
   CHECK_CUDA_ERRORS(cudaMemcpy(ratesPCla, CPUratesPCla, NCla * sizeof(uint64_t), cudaMemcpyHostToDevice));
-  printf("3\n");
+
   // ------------------------------------------------------------------------------
   //  parameters initialization 
   // ------------------------------------------------------------------------------
@@ -108,18 +107,15 @@ int main()
   rewrite_gEI_gIE();
   rewrite_gCE();
   get_rand(seedPPoi, NPoi, 100000);
-  printf("4\n");
+
   // ------------------------------------------------------------------------------
   //  reset model
   // ------------------------------------------------------------------------------
-  printf("5\n");
 
   copyStateToDevice();
-  printf("6\n");
   initmodel(); // need by sparse connection
-  printf("7\n");
   copyCurrentSpikesToDevice();
-  printf("8\n");
+
   // ------------------------------------------------------------------------------
   //  output data to file
   // ------------------------------------------------------------------------------
@@ -557,7 +553,7 @@ void rewrite_gCE()
   for (int i_dense = 0; i_dense < preN_CE; i_dense++) 
     for (int j_dense = 0; j_dense < postN_CE; j_dense++)
     {
-      if (i_dense == int(j_dense/postN_CE))
+      if (i_dense == int(j_dense/N_SQRT))
         g_CE_array[i_dense * postN_CE + j_dense] = 0.0; 
       else
         g_CE_array[i_dense * postN_CE + j_dense] = g_CE;
