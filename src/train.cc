@@ -555,7 +555,7 @@ void rewrite_gCE()
     for (int j_dense = 0; j_dense < postN_CE; j_dense++)
     {
       if (i_dense == int(j_dense/postN_CE))
-        g_CE_array[i_dense * preN_CE + j_dense] = 0.0; 
+        g_CE_array[i_dense * postN_CE + j_dense] = 0.0; 
       else
         g_CE_array[i_dense * postN_CE + j_dense] = g_CE;
       
