@@ -110,10 +110,13 @@ int main()
   //  reset model
   // ------------------------------------------------------------------------------
   copyStateToDevice();
-  rewrite_gCE();
-  initmodel(); // need by sparse connection
-  copyCurrentSpikesToDevice();
   printf("5\n");
+  rewrite_gCE();
+  printf("6\n");
+  initmodel(); // need by sparse connection
+  printf("7\n");
+  copyCurrentSpikesToDevice();
+  printf("8\n");
   // ------------------------------------------------------------------------------
   //  output data to file
   // ------------------------------------------------------------------------------
