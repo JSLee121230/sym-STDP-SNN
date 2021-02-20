@@ -604,9 +604,9 @@ void reset_Cla_para()
   pushPClaCurrentSpikeEventsToDevice();
 
   fill_n(inSynC2E, NCla, 0);
-  printf("ASDasdasdsdasd11111")
+  printf("ASDasdasdsdasd11111");
   rewrite_gEC();
-  printf("ASDasdasdsdasd22222")
+  printf("ASDasdasdsdasd22222");
   //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   pushC2EStateToDevice();
 }
