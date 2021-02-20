@@ -116,17 +116,9 @@ double p_STDP_PE[] = {
     da_stdp_PE_a_plus,
     da_stdp_PE_a_minus,
 };
-double ini_DA_STDP_EC[] = {
+double ini_STDP_EC[] = {
     da_stdp_EC_g,
     da_stdp_EC_testDataEvaluateMode,
-};
-double p_DA_STDP_EC[] = {
-    da_stdp_EC_nu_ee_pre,
-    da_stdp_EC_nu_ee_post,
-    da_stdp_EC_g_min,
-    da_stdp_EC_g_max,
-    da_stdp_EC_a_plus,
-    da_stdp_EC_a_minus,
 };
 //------------------------------------------------------------------------------
 // noSTDP
@@ -193,7 +185,7 @@ void modelDefinition(NNmodel &model)
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
-    model.addSynapsePopulation("C2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_noSTDP, p_noSTDP_CE, postSynV, postExpC2E);
+    model.addSynapsePopulation("C2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_STDP_EC, p_noSTDP_CE, postSynV, postExpC2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
     model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
