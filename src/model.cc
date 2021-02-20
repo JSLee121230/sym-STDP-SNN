@@ -131,7 +131,7 @@ double ini_noSTDP[] = {
     no_stdp_g,
 };
 double *p_noSTDP_PE = NULL;
-double *p_noSTDP_EC = NULL;
+double *p_noSTDP_CE = NULL;
 //------------------------------------------------------------------------------
 // E——>I & I——>E
 //------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ void modelDefinition(NNmodel &model)
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
-    model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_NSYNAPSE_CE, p_NSYNAPSE_CE, postSynV, postExpP2E);
+    model.addSynapsePopulation("C2E", STDP, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_noSTDP, p_noSTDP_CE, postSynV, postExpP2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
     model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
