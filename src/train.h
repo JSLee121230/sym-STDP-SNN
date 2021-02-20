@@ -18,6 +18,7 @@ using namespace std;
 #define postN_CE NExc
 #define connN_E2I NExc 
 #define connN_I2E NInh *(NExc - 1) 
+#define connN_C2E (NCla * NExc)
 
 #define INPUT_INTENSITY_INIT 2
 #define Cla_INPUT_INTENSITY_INIT 0.2 //khz

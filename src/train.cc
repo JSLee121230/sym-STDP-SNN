@@ -34,6 +34,7 @@ int main()
   allocateMem();
   allocateE2I(connN_E2I);
   allocateI2E(connN_I2E);
+  allocateC2E(connN_C2E);
   initialize();
 
   //------------------------------------------------------------------------------
@@ -102,8 +103,6 @@ int main()
   read_gP2E_from_file("./weights/mnist_400/gP2E", gP2E);
   read_thetaPExc_from_file("./weights/mnist_400/theta", thetaPExc);
 #endif
-  for ( int i = 0; i < 100000; i++)
-    printf("%f", gC2E[i]);
 
   //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
   rewrite_gEI_gIE();
