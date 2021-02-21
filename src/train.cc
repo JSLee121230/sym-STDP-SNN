@@ -184,7 +184,7 @@ int main()
   imageNum = 0;
   bool testDataEvaluateMode = true; // false;
   bool test_begin;
-  while (imageNum < NUM_SAMPLES)
+  while (imageNum < NUM_SAMPLES+1)
   {
     // imageNum update
     static bool testDataStartOnce = true;
