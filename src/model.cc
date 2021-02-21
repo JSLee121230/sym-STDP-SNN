@@ -177,7 +177,7 @@ void modelDefinition(NNmodel &model)
     model.addNeuronPopulation("PExc", NExc, LIF_Exc, p_Exc_fixed, ini_Exc);
 #endif
     model.addNeuronPopulation("PInh", NInh, LIF_Inh, p_Inh, ini_Inh); 
-    model.addNeuronPopulation("PCla", NCla, LIF_Cla, p_Cla, ini_Cla);
+    model.addNeuronPopulation("PCla", NCla, Poi, p_Poi, ini_Poi);
 
 #ifndef test_mode
 #ifndef FIXED_HIDDEN_LAYER
