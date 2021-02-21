@@ -89,8 +89,8 @@ double postExpP2E[2] = {
     P2E_Erev,  // Reversal potential
 };
 double postExpC2E[2] = {
-    I2E_tau_S,
-    I2E_Erev,
+    P2E_tau_S, // decay time constant for S [ms]
+    P2E_Erev,  // Reversal potential
 };
 double postExpE2I[2] = {
     E2I_tau_S,
