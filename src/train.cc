@@ -251,18 +251,18 @@ int main()
     // ------------------------------------------------------------------------------
     //  supervision layer
     // ------------------------------------------------------------------------------
-    if (imageNum < NUM_TRAINING_SL_INI)
-    {
-      static bool OnlyOnceInitCla = true;
-      if (OnlyOnceInitCla) // Reset supervision layer parameters when imageNum = NUM_TRAINING_SL_INI
-      {
-        cout << "Start to train Cla. in SL:" << NUM_TRAINING_SL_INI << endl;
-        OnlyOnceInitCla = false;
-        reset_Cla_para();
-      }
-      if (!testDataEvaluateMode)
-        Cla_feed_to_networks(labels[imageNum % num_train_samples], cla_FR_khz, cla_input_intensity);
-    }
+    // if (imageNum < NUM_TRAINING_SL_INI)
+    // {
+    //   static bool OnlyOnceInitCla = true;
+    //   if (OnlyOnceInitCla) // Reset supervision layer parameters when imageNum = NUM_TRAINING_SL_INI
+    //   {
+    //     cout << "Start to train Cla. in SL:" << NUM_TRAINING_SL_INI << endl;
+    //     OnlyOnceInitCla = false;
+    //     reset_Cla_para();
+    //   }
+    //   if (!testDataEvaluateMode)
+    //     Cla_feed_to_networks(labels[imageNum % num_train_samples], cla_FR_khz, cla_input_intensity);
+    // }
     // ------------------------------------------------------------------------------
     //  350ms run
     // ------------------------------------------------------------------------------
