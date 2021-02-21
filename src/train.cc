@@ -201,7 +201,7 @@ int main()
       CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModeP2E, testDataEvaluateModeP2E, size_gP2E * sizeof(bool), cudaMemcpyHostToDevice));
 #endif
 
-      fill_n(testDataEvaluateModePCla, NCla, testDataEvaluateMode);
+      //fill_n(testDataEvaluateModePCla, NCla, testDataEvaluateMode);
       //fill_n(testDataEvaluateModeC2E, size_gC2E, testDataEvaluateMode);
       CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModePCla, testDataEvaluateModePCla, NCla * sizeof(bool), cudaMemcpyHostToDevice));
       //CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModeC2E, testDataEvaluateModeC2E, size_gC2E * sizeof(bool), cudaMemcpyHostToDevice));
@@ -253,13 +253,13 @@ int main()
     // ------------------------------------------------------------------------------
     if (imageNum < NUM_TRAINING_SL_INI)
     {
-      static bool OnlyOnceInitCla = true;
-      if (OnlyOnceInitCla) // Reset supervision layer parameters when imageNum = NUM_TRAINING_SL_INI
-      {
-        cout << "Start to train Cla. in SL:" << NUM_TRAINING_SL_INI << endl;
-        OnlyOnceInitCla = false;
-        reset_Cla_para();
-      }
+      //static bool OnlyOnceInitCla = true;
+      //if (OnlyOnceInitCla) // Reset supervision layer parameters when imageNum = NUM_TRAINING_SL_INI
+      //{
+      //  cout << "Start to train Cla. in SL:" << NUM_TRAINING_SL_INI << endl;
+      //  OnlyOnceInitCla = false;
+      //  reset_Cla_para();
+      //}
       if (!testDataEvaluateMode)
         Cla_feed_to_networks(labels[imageNum % NUM_TRAIN_SAMPLES], cla_FR_khz, cla_input_intensity);
     }
