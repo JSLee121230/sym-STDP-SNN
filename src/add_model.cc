@@ -230,6 +230,7 @@ int addSynapseModel_STDP(vector<weightUpdateModel> &weightUpdateModels)
     wuSTDP.pNames.push_back("a_minus");
     // wuSTDP.synapseDynamics = R"()";
     // code for presynaptic spike
+#ifndef PROPSOED
     wuSTDP.simCode = R"(
     $(addtoinSyn) = $(g);
     $(updatelinsyn);
@@ -245,6 +246,23 @@ int addSynapseModel_STDP(vector<weightUpdateModel> &weightUpdateModels)
             $(g) = $(g_max);
     }
     )";
+#else
+    wuSTDP.simCode = R"(
+    $(addtoinSyn) = $(g);
+    $(updatelinsyn);
+    if($(testDataEvaluateMode))
+    {
+        
+    }
+    else
+    {
+        $(g) -= $(nu_ee_pre) * $(trace1_post);
+        $(trace_pre) += $(a_plus);
+        if ($(g) < -$(g_max))
+            $(g) = -$(g_max);
+    }
+    )";
+#endif
     wuSTDP.dps = NULL;
     // code for post-synaptic spike
     wuSTDP.simLearnPost = R"(

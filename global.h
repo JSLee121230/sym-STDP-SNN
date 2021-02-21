@@ -1,6 +1,7 @@
 #ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 
+#define PROPSOED
 // #define TEST_MODE
 #define ID_DEVICE 0 //-1 // choose GPU. '-1' represents 'AUTO_CHOOSE'
 // #define FILE_RECODER
@@ -54,6 +55,6 @@
 #define UPDATE_TOTAL (NUM_SAMPLES / UPDATE_INTERVAL)
 #define TEST_MODE_NEURON 0
 #define DATASET_TRAIN 1
-#define NUM_TRAINING_SL_INI NUM_TRAIN_SAMPLES * 3 //0.5 // Starting Time for Supervised Learning (SL)
+#define NUM_TRAINING_SL_INI NUM_TRAIN_SAMPLES * 2 //0.5 // Starting Time for Supervised Learning (SL)
 
 #endif
