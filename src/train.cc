@@ -244,9 +244,9 @@ int main()
     //  input images
     // ------------------------------------------------------------------------------
     if (!testDataEvaluateMode)
-      feed_to_networks(images[imageNum % num_train_samples], FR_khz, input_intensity);
+      feed_to_networks(images[imageNum % NUM_TRAIN_SAMPLES], FR_khz, input_intensity);
     else
-      feed_to_networks(images_test[imageNum % num_test_samples], FR_khz, input_intensity);
+      feed_to_networks(images_test[imageNum % NUM_TEST_SAMPLES], FR_khz, input_intensity);
 
     // ------------------------------------------------------------------------------
     //  supervision layer
