@@ -592,28 +592,28 @@ void rewrite_gEI_gIE()
   delete[] g_EI_array;
   delete[] g_IE_array;
 }
-void reset_Cla_para()
-{
-  glbSpkCntPCla[0] = 0;
-
-  fill_n(glbSpkPCla, NCla, 0);
-  //fill_n(sTPCla, NCla, -10); //last spike time
-  fill_n(VPCla, NCla, -100);
-  fill_n(trace1PCla, NCla, 1);
-  fill_n(trace2PCla, NCla, 1);
-  fill_n(seedPCla, NCla, 1);
-
-  pushPClaStateToDevice();
-  pushPClaSpikesToDevice();
-  pushPClaSpikeEventsToDevice();
-  pushPClaCurrentSpikesToDevice();
-  pushPClaCurrentSpikeEventsToDevice();
-
-  fill_n(inSynC2E, NCla, 0);
-  rewrite_gCE();
-  //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
-  pushC2EStateToDevice();
-}
+//void reset_Cla_para()
+//{
+//  glbSpkCntPCla[0] = 0;
+//
+//  fill_n(glbSpkPCla, NCla, 0);
+//  //fill_n(sTPCla, NCla, -10); //last spike time
+//  fill_n(VPCla, NCla, -100);
+//  fill_n(trace1PCla, NCla, 1);
+//  fill_n(trace2PCla, NCla, 1);
+//  fill_n(seedPCla, NCla, 1);
+//
+//  pushPClaStateToDevice();
+//  pushPClaSpikesToDevice();
+//  pushPClaSpikeEventsToDevice();
+//  pushPClaCurrentSpikesToDevice();
+//  pushPClaCurrentSpikeEventsToDevice();
+//
+//  fill_n(inSynC2E, NCla, 0);
+//  rewrite_gCE();
+//  //get_rand_g(gC2E, NExc * NCla, gEC_INIT_MAX_1000);
+//  pushC2EStateToDevice();
+//}
 void feed_to_networks(vector<float> image, vector<float> &FR_khz, float input_intensity)
 {
   static uint64_t *CPUratesPPoi = new uint64_t[NPoi];
