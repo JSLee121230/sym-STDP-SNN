@@ -111,7 +111,7 @@ double ini_STDP_PE[] = {
 double p_STDP_PE[] = {
     da_stdp_PE_nu_ee_pre,
     da_stdp_PE_nu_ee_post,
-    da_stdp_PE_g_min,
+    -da_stdp_PE_g_max,
     da_stdp_PE_g_max,
     da_stdp_PE_a_plus,
     da_stdp_PE_a_minus,
