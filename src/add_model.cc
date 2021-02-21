@@ -254,7 +254,7 @@ int addSynapseModel_STDP(vector<weightUpdateModel> &weightUpdateModels)
     }
     else
     {
-        $(g) = $(nu_ee_post) * $(trace_pre);
+        $(g) += $(nu_ee_post) * $(trace_pre);
         $(trace1_post) += $(a_minus);
         if ($(g) > $(g_max))
             $(g) = $(g_max);
