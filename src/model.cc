@@ -185,7 +185,7 @@ void modelDefinition(NNmodel &model)
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
 #endif
-    model.addSynapsePopulation("C2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_NSYNAPSE_CE, p_NSYNAPSE_CE, postSynV, postExpC2E);
+    model.addSynapsePopulation("C2E", NSYNAPSE, SPARSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PCla", "PExc", ini_NSYNAPSE_IE, p_NSYNAPSE_IE, postSynV, postExpI2E);
 #else
     model.addSynapsePopulation("P2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PPoi", "PExc", ini_noSTDP, p_noSTDP_PE, postSynV, postExpP2E); 
     model.addSynapsePopulation("C2E", NSYNAPSE, DENSE, INDIVIDUALG, NO_DELAY, EXPDECAY, "PExc", "PCla", ini_noSTDP, p_noSTDP_EC, postSynV, postExpP2E);
