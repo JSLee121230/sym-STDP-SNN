@@ -203,7 +203,7 @@ int main()
 
       //fill_n(testDataEvaluateModePCla, NCla, testDataEvaluateMode);
       //fill_n(testDataEvaluateModeC2E, size_gC2E, testDataEvaluateMode);
-      CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModePCla, testDataEvaluateModePCla, NCla * sizeof(bool), cudaMemcpyHostToDevice));
+      //CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModePCla, testDataEvaluateModePCla, NCla * sizeof(bool), cudaMemcpyHostToDevice));
       //CHECK_CUDA_ERRORS(cudaMemcpy(d_testDataEvaluateModeC2E, testDataEvaluateModeC2E, size_gC2E * sizeof(bool), cudaMemcpyHostToDevice));
 
       if (!testDataEvaluateMode) //'false' means run the test set. 'true' means start running test set
