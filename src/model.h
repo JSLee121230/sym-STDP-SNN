@@ -61,9 +61,8 @@
 // #define Exc_Ttheta 1e7 * 2
 // #define Exc_theta_plus 0.05
 /***parameters of 1600 excitatory neurons for mnist***/
-#define Exc_Ttheta 1e7 * 0.8
-// #define Exc_theta_plus 0.05 * 1.4
-#define Exc_theta_plus 0.05 * 0.14
+#define Exc_Ttheta 1e7 * 1
+#define Exc_theta_plus 0.07
 /***parameters of 400 excitatory neurons for mnist***/
 /***parameters of 100 excitatory neurons for mnist***/
 // #define Exc_Ttheta 1e7 * 0.6
@@ -141,7 +140,10 @@
 // #define gEC_MAX 40.0
 
 #define g_EI 10.4
-#define g_IE 17
+#ifndef PROPOSED
+  #define g_IE 17
+#else
+  #define g_IE 17
 
 /***setting for mnist***/
 #define NORMAL 78.4
@@ -169,7 +171,7 @@
 /***parameters of 1600 excitatory neurons for mnist***/
 //#define da_stdp_PE_nu_ee_pre 0.01 * 2
 //#define da_stdp_PE_nu_ee_post 0.01 * 2
-#define da_stdp_PE_nu_ee_pre 0.01 * 2
+#define da_stdp_PE_nu_ee_pre 0.01 * 3
 #define da_stdp_PE_nu_ee_post 0.01 * 4
 /***parameters of 400 excitatory neurons for mnist***/
 /***parameters of 100 excitatory neurons for mnist***/

@@ -1,7 +1,7 @@
 #ifndef _GLOBAL_H_
 #define _GLOBAL_H_
 
-#define PROPSOED
+#define PROPOSED
 // #define TEST_MODE
 #define ID_DEVICE 0 //-1 // choose GPU. '-1' represents 'AUTO_CHOOSE'
 // #define FILE_RECODER

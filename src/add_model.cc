@@ -230,7 +230,7 @@ int addSynapseModel_STDP(vector<weightUpdateModel> &weightUpdateModels)
     wuSTDP.pNames.push_back("a_minus");
     // wuSTDP.synapseDynamics = R"()";
     // code for presynaptic spike
-#ifndef PROPSOED
+#ifndef PROPOSED
     wuSTDP.simCode = R"(
     $(addtoinSyn) = $(g);
     $(updatelinsyn);
