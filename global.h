@@ -26,9 +26,9 @@
 /***parameters of 6400 excitatory neurons for mnist***/
 // #define N_SQRT 80
 /***parameters of 1600 excitatory neurons for mnist***/
-// #define N_SQRT 40
+#define N_SQRT 40
 /***parameters of 400 excitatory neurons for mnist***/
- #define N_SQRT 20
+// #define N_SQRT 20
 /***parameters of 100 excitatory neurons for mnist***/
 // #define N_SQRT 10
 /***parameters of 6400 excitatory neurons for fashion-mnist***/
