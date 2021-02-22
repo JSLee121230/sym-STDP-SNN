@@ -168,8 +168,8 @@
 /***parameters of 1600 excitatory neurons for mnist***/
 //#define da_stdp_PE_nu_ee_pre 0.01 * 2
 //#define da_stdp_PE_nu_ee_post 0.01 * 2
-#define da_stdp_PE_nu_ee_pre 0.01 * 1
-#define da_stdp_PE_nu_ee_post 0.01 * 2
+#define da_stdp_PE_nu_ee_pre 0.01 * 2
+#define da_stdp_PE_nu_ee_post 0.01 * 4
 /***parameters of 400 excitatory neurons for mnist***/
 /***parameters of 100 excitatory neurons for mnist***/
 //#define da_stdp_PE_nu_ee_pre 0.01 * 0.5

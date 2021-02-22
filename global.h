@@ -8,7 +8,7 @@
 // #define SPIKES_MONITOR
 // #define FIXED_HIDDEN_LAYER
 // #define SVM_TRAIN
-// #define PLOT_ON
+#define PLOT_ON
 
 /***setting for mnist***/
 #define DATA "mnist/"
