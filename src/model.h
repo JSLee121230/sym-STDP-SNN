@@ -173,8 +173,8 @@
 //#define da_stdp_PE_nu_ee_pre 0.01 * 0.5
 //#define da_stdp_PE_nu_ee_post 0.01 * 0.5
 
-#define da_stdp_PE_nu_ee_pre 0.01 * 2
-#define da_stdp_PE_nu_ee_post 0.01 * 2
+#define da_stdp_PE_nu_ee_pre 0.01 * 0.25
+#define da_stdp_PE_nu_ee_post 0.01 * 0.5
 /***parameters of 400 excitatory neurons for fashion-mnist***/
 // #define da_stdp_PE_nu_ee_pre 0.01 * 2
 // #define da_stdp_PE_nu_ee_post 0.01 * 2
