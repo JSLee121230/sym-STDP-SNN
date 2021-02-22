@@ -49,12 +49,12 @@
 
 #define NUM_TRAIN_SAMPLES 60000
 #define NUM_TEST_SAMPLES 10000
-#define NUM_SAMPLES 60000 * 3
+#define NUM_SAMPLES 60000 * 6
 #define UPDATE_INTERVAL 10000 
 #define EVALUATION_INTERVAL 10000
 #define UPDATE_TOTAL (NUM_SAMPLES / UPDATE_INTERVAL)
 #define TEST_MODE_NEURON 0
 #define DATASET_TRAIN 1
-#define NUM_TRAINING_SL_INI NUM_TRAIN_SAMPLES * 2 //0.5 // Starting Time for Supervised Learning (SL)
+#define NUM_TRAINING_SL_INI NUM_TRAIN_SAMPLES * 4 //0.5 // Starting Time for Supervised Learning (SL)
 
 #endif
