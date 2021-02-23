@@ -61,7 +61,7 @@
 // #define Exc_Ttheta 1e7 * 2
 // #define Exc_theta_plus 0.05
 /***parameters of 1600 excitatory neurons for mnist***/
-#define Exc_Ttheta 1e7 * 1.2
+#define Exc_Ttheta 1e7 * 1.6
 #define Exc_theta_plus 0.07
 /***parameters of 400 excitatory neurons for mnist***/
 /***parameters of 100 excitatory neurons for mnist***/
