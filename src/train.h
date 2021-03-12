@@ -21,7 +21,7 @@ using namespace std;
 #define connN_C2E (NCla * NExc)
 
 #define INPUT_INTENSITY_INIT 2
-#define Cla_INPUT_INTENSITY_INIT 0.2 //khz
+#define Cla_INPUT_INTENSITY_INIT 2 // 0.2 //khz
 
 #define LastTrain 0
 #define NowTrain 1
