@@ -162,7 +162,7 @@ void modelDefinition(NNmodel &model)
     int Poi     = addNeuronModel_Poi(nModels);
     int LIF_Exc = addNeuronModel_LIF_Exc(nModels);
     int LIF_Inh = addNeuronModel_LIF_Inh(nModels);
-    int LIF_Cla = addNeuronModel_LIF_Cla(nModels);
+    int LIF_Cla = addNeuronModel_Poi(nModels);
     int STDP    = addSynapseModel_STDP(weightUpdateModels);
 
     model.setGPUDevice(ID_DEVICE); 
